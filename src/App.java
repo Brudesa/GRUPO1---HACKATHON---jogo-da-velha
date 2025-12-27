@@ -300,6 +300,11 @@ caractereUsuario);
      */
     static boolean teveGanhador(char caractereJogador) {
         //TODO 20: Implementar método conforme explicação
+        if(teveGanhadorLinha(caractereJogador) || teveGanhadorColuna(caractereJogador) ||
+                teveGanhadorDiagonalPrincipal(caractereJogador) || teveGanhadorDiagonalSecundaria(caractereJogador)){
+            return true;
+        }
+        return false;
     }
 
     /*
@@ -315,18 +320,41 @@ caractereUsuario);
      */
     static boolean teveGanhadorLinha(char caractereJogador) {
         //TODO 21: Implementar método conforme explicação
+        for(int i = 0; i < tabuleiro.length; i++){
+            if (tabuleiro[i][0] == caractereJogador && tabuleiro[i][1] == caractereJogador && tabuleiro[i][2] == caractereJogador){
+                return true;
+            }
+
+        }
+        return false;
     }
 
     static boolean teveGanhadorColuna(char caractereJogador) {
         //TODO 22: Implementar método conforme explicação
+        for(int i = 0; i < tabuleiro.length; i++){
+            for(int j = 0; j < tabuleiro[i].length; j++){
+                if(tabuleiro[0][j] == caractereJogador && tabuleiro[1][j] == caractereJogador && tabuleiro[2][j] == caractereJogador){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     static boolean teveGanhadorDiagonalPrincipal( char caractereJogador) {
         //TODO 23: Implementar método conforme explicação
+        if (tabuleiro[0][0] == caractereJogador && tabuleiro[1][1] == caractereJogador && tabuleiro[2][2] == caractereJogador){
+            return true;
+        }
+        return false;
     }
 
     static boolean teveGanhadorDiagonalSecundaria(char caractereJogador) {
         //TODO 24: Implementar método conforme explicação
+        if (tabuleiro[2][0] == caractereJogador && tabuleiro[1][1] == caractereJogador && tabuleiro[0][2] == caractereJogador){
+            return true;
+        }
+        return false;
     }
 
     /*
@@ -337,6 +365,8 @@ caractereUsuario);
      */
     static void limparTela() {
         //TODO 25: Implementar método conforme explicação        
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 
     /*
