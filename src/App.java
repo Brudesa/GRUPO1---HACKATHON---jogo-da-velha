@@ -39,20 +39,20 @@ public class App {
         boolean vezUsuarioJogar =  sortearValorBooleano();  
 
         boolean jogoContinua;
+        
 
         do {
             // controla se o jogo terminou
             jogoContinua = true;
             exibirTabuleiro();
 
-            if (vezUsuarioJogar){
-               
-                //TODO 03: Execute a chamada processar vez do usuario
-
+            if (vezUsuarioJogar == true){
+                processarVezUsuario(caractereUsuario); //TODO 03: Execute a chamada processar vez do usuario
                 // Verifica se o usuario venceu
-                //TODO 04: Este if deve executar apenas se teve ganhador 
-                if ( /*TODO: esreva aqui a chamada para teveGanhador verificar se o usuário ganhou*/ ) {
-                    
+                //TODO 04: Este if deve executar apenas se teve ganhador
+                //Modificado por ADRIANA¹
+                //Modificado por João Victor² | if (teveGanhador == true) -> if (teveGanhador(caractereUsuario))
+                if (teveGanhador(caractereUsuario)) /*TODO: esreva aqui a chamada para teveGanhador verificar se o usuário ganhou*/  {
                     exibirTabuleiro();
                     exibirVitoriaUsuario();
                     jogoContinua = false;
@@ -61,24 +61,30 @@ public class App {
                 // define que na proxima execucao do laco o jogador nao joga, ou seja, será a vez do computador
                 vezUsuarioJogar = false;
             } else {
-
+                processarVezComputador(caractereComputador); 
                 //TODO 05: Execute a chamada processar vez do computador
+                //Modificado por ADRIANA
 
                 // Verifica se o computador venceu
                 //TODO 06: Este if deve executar apenas se teve ganhador
-                if ( /*esreva aqui a chamada para teve ganhador*/ ) {
-
-                    //TODO 07: Exiba que o computador ganhou
+                //Modificado por ADRIANA
+                if (teveGanhador == true) {
+                    exibirTabuleiro();
+                    exibirVitoriaComputador(); 
+                    //TODO 07: Exiba que o computador ganhou 
+                    // //Modificado por ADRIANA
                     jogoContinua = false;
                 }
 
-                //TODO 08: defina qual o vaor a variavel abaixo deve possuir para que a proxima execucao do laco seja a vez do usuário
-                vezUsuarioJogar = ????;
+                //TODO 08: defina qual o valor a variavel abaixo deve possuir para que a proxima execucao do laco seja a vez do usuário
+                //Modificado por ADRIANA
+                vezUsuarioJogar = true;
             }
         
             //TODO 09: Este if deve executar apenas se o jogo continua E 
-            //ocorreu tempate. Utilize o metodo teveEmpate()
-            if ( /*escreva aqui a condicao conforme o TODO acima*/ ) {
+            //ocorreu empate. Utilize o metodo teveEmpate()
+            //Modificado por ADRIANA
+            if (jogoContinua && teveEmpate()) {
                 exibirTabuleiro();
                 exibirEmpate();
                 jogoContinua = false;
