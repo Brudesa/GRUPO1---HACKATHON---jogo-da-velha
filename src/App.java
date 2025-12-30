@@ -109,9 +109,11 @@ public class App {
      */
     static void inicializarTabuleiro() {
         //TODO 10: Implementar método conforme explicação
-        for (int linha = 0; linha < TAMANHO_TABULEIRO; linha++){
-            for (int coluna = 0; coluna < TAMANHO_TABULEIRO; coluna++){
-                tabuleiro[linha][coluna] = ' ';
+        // Modificado por Bruna
+
+        for(int i = 0; i < tabuleiro.length; i++){
+            for(int j = 0; j < tabuleiro[i].length; j++){
+                tabuleiro[i][j] = ' ';
             }
         }
     }
