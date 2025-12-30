@@ -242,9 +242,15 @@ caractereUsuario);
      * return.
      * Nível de complexidade: 4 de 10
      */
+
+    //TODO 16: Implementar método conforme explicação
     static int[] converterJogadaStringParaVetorInt(String jogada) {
-        //TODO 16: Implementar método conforme explicação
-    }
+    int[] v = new int[2];
+    v[0] = Character.getNumericValue(jogada.charAt(0));
+    v[1] = Character.getNumericValue(jogada.charAt(1));
+    return v;
+}
+ }
 
     /*
      * Descrição: Utilizado para realizar as ações necessárias para processar a vez
