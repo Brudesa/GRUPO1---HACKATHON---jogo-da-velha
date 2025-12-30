@@ -169,8 +169,11 @@ caractereUsuario);
      * dentro da lista de posições livres pense em usar método contanis da string.
      * Nível de complexidade: 3 de 10
      */
+
+    //TODO 13: Implementar método conforme explicação
     static boolean jogadaValida(String posicoesLivres, int linha, int coluna) {
-        //TODO 13: Implementar método conforme explicação
+        String alvo = "" + linha + coluna + ";";
+        return posicoesLivres.contains(alvo);    
     }
 
     /*
