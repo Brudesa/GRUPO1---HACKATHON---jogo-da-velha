@@ -173,7 +173,8 @@ caractereUsuario);
     //TODO 13: Implementar método conforme explicação
     static boolean jogadaValida(String posicoesLivres, int linha, int coluna) {
         String alvo = "" + linha + coluna + ";";
-        return posicoesLivres.contains(alvo);    
+        return posicoesLivres.contains(alvo);
+   
     }
 
     /*
