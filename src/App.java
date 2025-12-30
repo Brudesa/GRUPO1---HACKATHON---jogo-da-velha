@@ -101,7 +101,11 @@ public class App {
      * Nível de complexidade: 3 de 10
      */
     static void inicializarTabuleiro() {
-        //TODO 10: Implementar método conforme explicação
+        for(int i = 0; i < tabuleiro.length; i++){
+            for(int j = 0; j < tabuleiro[i].length; j++){
+                tabuleiro[i][j] = ' ';
+            }
+        }
 
     }
 
