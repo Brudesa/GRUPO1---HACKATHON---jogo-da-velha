@@ -68,6 +68,7 @@ public class App {
                 // Verifica se o computador venceu
                 //TODO 06: Este if deve executar apenas se teve ganhador
                 //Modificado por ADRIANA
+                //Modificado por João Victor² | if (teveGanhador == true) -> if (teveGanhador(caractereComputador))
                 if (teveGanhador(caractereComputador)) {
                     exibirTabuleiro();
                     exibirVitoriaComputador(); 
@@ -108,7 +109,11 @@ public class App {
      */
     static void inicializarTabuleiro() {
         //TODO 10: Implementar método conforme explicação
-
+        for (int linha = 0; linha < TAMANHO_TABULEIRO; linha++){
+            for (int coluna = 0; coluna < TAMANHO_TABULEIRO; coluna++){
+                tabuleiro[linha][coluna] = ' ';
+            }
+        }
     }
 
     /*
