@@ -484,6 +484,8 @@ caractereUsuario);
      */
     static boolean sortearValorBooleano() {
         //TODO 32: Implementar método conforme explicação
+        Random sorteador = new Random();
+        return sorteador.nextBoolean();
     
     }
 }
