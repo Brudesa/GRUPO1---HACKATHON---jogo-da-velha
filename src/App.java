@@ -178,9 +178,13 @@ caractereUsuario);
      * dentro da lista de posições livres pense em usar método contanis da string.
      * Nível de complexidade: 3 de 10
      */
-    static boolean jogadaValida(String posicoesLivres, int linha, int coluna) {
+
         //TODO 13: Implementar método conforme explicação
+        static boolean jogadaValida(String posicoesLivres, int linha, int coluna) {
+            String alvo = "" + linha + coluna + ";";
+            return posicoesLivres.contains(alvo);    
     }
+    
 
     /*
      * Descrição: Utilizado para obter do usuário a linha e a coluna que ele deseja
@@ -247,9 +251,16 @@ caractereUsuario);
      * return.
      * Nível de complexidade: 4 de 10
      */
+
     static int[] converterJogadaStringParaVetorInt(String jogada) {
         //TODO 16: Implementar método conforme explicação
-    }
+    
+    int[] v = new int[2];
+    v[0] = Character.getNumericValue(jogada.charAt(0));
+    v[1] = Character.getNumericValue(jogada.charAt(1));
+    return v;
+}
+ 
 
     /*
      * Descrição: Utilizado para realizar as ações necessárias para processar a vez
@@ -469,10 +480,6 @@ caractereUsuario);
      */
     static boolean sortearValorBooleano() {
         //TODO 32: Implementar método conforme explicação
-    }
-
-
-}
-        
+    
     }
 }
