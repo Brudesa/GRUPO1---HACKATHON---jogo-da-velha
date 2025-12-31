@@ -112,7 +112,7 @@ public class App {
         // Modificado por Bruna
 
         for(int linha = 0; linha < tabuleiro.length; linha++){
-            for(int coluna = 0; coluna < tabuleiro[i].length; coluna++){
+            for(int coluna = 0; coluna < tabuleiro[linha].length; coluna++){
                 tabuleiro[linha][coluna] = ' ';
             }
         }
