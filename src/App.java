@@ -111,9 +111,9 @@ public class App {
         //TODO 10: Implementar método conforme explicação
         // Modificado por Bruna
 
-        for(int i = 0; i < tabuleiro.length; i++){
-            for(int j = 0; j < tabuleiro[i].length; j++){
-                tabuleiro[i][j] = ' ';
+        for(int linha = 0; linha < tabuleiro.length; linha++){
+            for(int coluna = 0; coluna < tabuleiro[i].length; coluna++){
+                tabuleiro[linha][coluna] = ' ';
             }
         }
     }
