@@ -303,6 +303,15 @@ caractereUsuario);
      */
     static String retornarPosicoesLivres() {
         //TODO 19: Implementar método conforme explicação
+        String posicoes = "";
+        for (int linha = 0; linha < tabuleiro.length; linha ++){
+            for (int coluna = 0; coluna < tabuleiro[linha].length; coluna++) {
+                if (tabuleiro[linha][coluna] == ' ') {
+                    posicoes = posicoes + linha + coluna + ";";
+                }
+            }
+        }
+        return posicoes;
     }
 
 
