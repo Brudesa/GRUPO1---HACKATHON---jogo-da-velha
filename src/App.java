@@ -314,11 +314,8 @@ caractereUsuario);
      */
     static boolean teveGanhador(char caractereJogador) {
         //TODO 20: Implementar método conforme explicação
-        if(teveGanhadorLinha(caractereJogador) || teveGanhadorColuna(caractereJogador) ||
-                teveGanhadorDiagonalPrincipal(caractereJogador) || teveGanhadorDiagonalSecundaria(caractereJogador)){
-            return true;
-        }
-        return false;
+        return teveGanhadorLinha(caractereJogador) || teveGanhadorColuna(caractereJogador) ||
+                teveGanhadorDiagonalPrincipal(caractereJogador) || teveGanhadorDiagonalSecundaria(caractereJogador);
     }
 
     /*
@@ -334,8 +331,8 @@ caractereUsuario);
      */
     static boolean teveGanhadorLinha(char caractereJogador) {
         //TODO 21: Implementar método conforme explicação
-        for(int i = 0; i < tabuleiro.length; i++){
-            if (tabuleiro[i][0] == caractereJogador && tabuleiro[i][1] == caractereJogador && tabuleiro[i][2] == caractereJogador){
+        for(int i = 0; i < App.tabuleiro.length; i++){
+            if (App.tabuleiro[i][0] == caractereJogador && App.tabuleiro[i][1] == caractereJogador && App.tabuleiro[i][2] == caractereJogador){
                 return true;
             }
 
@@ -345,9 +342,9 @@ caractereUsuario);
 
     static boolean teveGanhadorColuna(char caractereJogador) {
         //TODO 22: Implementar método conforme explicação
-        for(int i = 0; i < tabuleiro.length; i++){
-            for(int j = 0; j < tabuleiro[i].length; j++){
-                if(tabuleiro[0][j] == caractereJogador && tabuleiro[1][j] == caractereJogador && tabuleiro[2][j] == caractereJogador){
+        for(int linha = 0; linha < App.tabuleiro.length; linha++){
+            for(int coluna = 0; coluna < App.tabuleiro[linha].length; coluna++){
+                if((App.tabuleiro[0][coluna] == caractereJogador) && (App.tabuleiro[1][coluna] == caractereJogador) && (App.tabuleiro[2][coluna] == caractereJogador)){
                     return true;
                 }
             }
@@ -357,18 +354,12 @@ caractereUsuario);
 
     static boolean teveGanhadorDiagonalPrincipal( char caractereJogador) {
         //TODO 23: Implementar método conforme explicação
-        if (tabuleiro[0][0] == caractereJogador && tabuleiro[1][1] == caractereJogador && tabuleiro[2][2] == caractereJogador){
-            return true;
-        }
-        return false;
+        return App.tabuleiro[0][0] == caractereJogador && App.tabuleiro[1][1] == caractereJogador && App.tabuleiro[2][2] == caractereJogador;
     }
 
     static boolean teveGanhadorDiagonalSecundaria(char caractereJogador) {
         //TODO 24: Implementar método conforme explicação
-        if (tabuleiro[2][0] == caractereJogador && tabuleiro[1][1] == caractereJogador && tabuleiro[0][2] == caractereJogador){
-            return true;
-        }
-        return false;
+        return App.tabuleiro[2][0] == caractereJogador && App.tabuleiro[1][1] == caractereJogador && App.tabuleiro[0][2] == caractereJogador;
     }
 
     /*
@@ -395,6 +386,16 @@ caractereUsuario);
         //TODO 26: Implementar método conforme explicação
         // execute no início deste método a chamada ao método limparTela
         // para garantir que seja exibido o tabuleiro sem nenhum conteúdo antes dele.
+        limparTela();
+        System.out.println("-------------");
+        for (int linha = 0; linha < App.tabuleiro.length; linha++) {
+            System.out.print("| ");
+            for (int coluna = 0; App.tabuleiro[linha].length < 3; coluna++) {
+                System.out.print(App.tabuleiro[linha][coluna] + " | ");
+            }
+            System.out.println();
+            System.out.println("-------------");
+        }
     }
 
     /*
