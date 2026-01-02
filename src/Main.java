@@ -51,15 +51,15 @@ public class Main {
 
                 // Verifica se o usuario venceu
                 //TODO 04: Este if deve executar apenas se teve ganhador 
-                if ( /*TODO: esreva aqui a chamada para teveGanhador verificar se o usuário ganhou*/ ) {
+                //if (/*TODO: esreva aqui a chamada para teveGanhador verificar se o usuário ganhou*/ ){
                     
-                    exibirTabuleiro();
-                    exibirVitoriaUsuario();
-                    jogoContinua = false;
-                }
+                  //  exibirTabuleiro();
+                   // exibirVitoriaUsuario();
+                   // jogoContinua = false;
+                
 
                 // define que na proxima execucao do laco o jogador nao joga, ou seja, será a vez do computador
-                vezUsuarioJogar = false;
+               // vezUsuarioJogar = false;
             } else {
 
                 //TODO 05: Execute a chamada processar vez do computador
@@ -388,13 +388,19 @@ caractereUsuario);
         // para garantir que seja exibido o tabuleiro sem nenhum conteúdo antes dele.
         limparTela();
         System.out.println("-------------");
-        for (int linha = 0; linha < App.tabuleiro.length; linha++) {
-            System.out.print("| ");
-            for (int coluna = 0; App.tabuleiro[linha].length < 3; coluna++) {
-                System.out.print(App.tabuleiro[linha][coluna] + " | ");
+        for (int i = 0; i < tabuleiro.lengthh; i++) {
+            for(int j = 0; j < tabuleiro[i].length; j++) {
+                System.out.print("| " + tabuleiro[i][j] + " ");
+
+                if(j < tabuleiro[i].length - 1) {
+                    System.out.print(" ");
+                }
             }
-            System.out.println();
-            System.out.println("-------------");
+            System.out.println("|");
+
+            if(i < tabuleiro.length - 1) {
+                System.out.println("-------------");
+            }
         }
     }
 
@@ -410,9 +416,13 @@ caractereUsuario);
      * retornado através do comando return
      * Nível de complexidade: 3 de 10
      */
+    //TODO 27: Implementar método conforme explicação
     static void atualizaTabuleiro(int[] jogada, char caractereJogador) {
-        //TODO 27: Implementar método conforme explicação
+        int linha = jogada[0];
+        int coluna = jogada[1];
 
+        tabuleiro[linha][coluna] = caractereJogador;
+        
     }
 
     /*
@@ -469,8 +479,11 @@ caractereUsuario);
      * método deve retornar o valor sorteado.
      * Nível de complexidade: 3 de 10
      */
+    //TODO 32: Implementar método conforme explicação
     static boolean sortearValorBooleano() {
-        //TODO 32: Implementar método conforme explicação
+        Random random = new Random();
+        return random.nextBoolean();
+        
     }
 
 
