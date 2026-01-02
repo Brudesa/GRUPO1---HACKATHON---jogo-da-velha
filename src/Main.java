@@ -263,7 +263,10 @@ caractereUsuario);
      * Nível de complexidade: 5 de 10
      */
     static void processarVezUsuario(char caractereUsuario) {
-        //TODO 17: Implementar método conforme explicação
+        //ADRIANA TODO 17: Implementar método conforme explicação
+        String livres = retornarPosicoesLivres();
+        int[] jogada = obterJogadaUsuario(livres , teclado);
+        atualizaTabuleiro(jogada, caractereUsuario);
     }
 
     /*
@@ -278,7 +281,10 @@ caractereUsuario);
      * Nível de complexidade: 10 de 10 se o computador for jogar para ganhar
      */
     static void processarVezComputador(char caractereComputador) {
-        //TODO 18: Implementar método conforme explicação
+        //ADRIANA TODO 18: Implementar método conforme explicação
+        String livres = retornarPosicoesLivres();
+        int[] jogada = obterJogadaComputador(livres , teclado);
+        atualizaTabuleiro(jogada, caractereComputador);
     }
 
     /*
