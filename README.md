@@ -1,18 +1,29 @@
-## Getting Started
+# Jogo da Velha (Hackathon) — Grupo 1
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+> Projeto de iniciantes em **Java** para completar um **Jogo da Velha** a partir de um código-base com **32 TODOs**.
 
-## Folder Structure
+---
 
-The workspace contains two folders by default, where:
+## Objetivo
+Concluir os **32 TODOs** do arquivo `AppBase.java`, implementando:
+- alternância de turnos (usuário/computador)
+- validação de jogadas
+- verificação de vitória e empate
+- exibição do tabuleiro no console
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+---
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+## Equipe
+- João Victor  
+- Adriana  
+- Bruna de Sá  
+- Filipe  
+- Gabriel Vieira  
+- Marlon  
+- Yuri  
+- Ayala  
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+---
 
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## Observação
+Projeto colaborativo para praticar lógica e fundamentos de Java em um hackathon.
