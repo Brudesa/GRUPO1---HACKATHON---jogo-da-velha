@@ -229,8 +229,18 @@ caractereUsuario);
      * e nem para tentar ganhar.
      * Nível de complexidade: 6 de 10
      */
+
+    //TODO 15: Implementar método conforme explicação
     static int[] obterJogadaComputador(String posicoesLivres, Scanner teclado) {
-        //TODO 15: Implementar método conforme explicação
+        Random random = new Random();
+        String[] posicoes = posicoesLivres.split(";");
+
+        if(posicoes.length > 0 && !posicoes[0]. isEmpty()){
+            String jogadaSelecionada = posicoes[random.nextInt(posicoes.length)];
+            return converterJogadaStringParaVetorInt(jogadaSelecionada);
+        }
+
+        return new int[]{0,0};
     }
 
     /*
@@ -291,10 +301,19 @@ caractereUsuario);
      * colunas. Depois de montar a string retorne a mesma através do comando return
      * Nível de complexidade: 5 de 10
      */
+     //TODO 19: Implementar método conforme explicação
     static String retornarPosicoesLivres() {
-        //TODO 19: Implementar método conforme explicação
-    }
+        String posicoes ="";
 
+        for (int i = 0; i < tabuleiro.length; i++) {
+            for (int j = 0; j < tabuleiro[i].length; j++) {
+                if (tabuleiro[i][j] == ' ') {
+                    posicoes += i + "" + j + ";";
+                }
+            }
+        }
+        return posicoes;
+    }
 
     /*
      * Descrição: Utilizado para verificar se o jogador identificado por
@@ -466,8 +485,10 @@ caractereUsuario);
      * função retornarPosicoesLivres. Retorne true se teve empate ou false
      * Nível de complexidade: 3 de 10
      */
+    //TODO 31: Implementar método conforme explicação
     static boolean teveEmpate() {
-        //TODO 31: Implementar método conforme explicação
+        String posicoes = retornarPosicoesLivres();
+        return posicoes.isEmpty();        
 
     }
 
