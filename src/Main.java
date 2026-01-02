@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 
 
-public class App {
+public class Main {
     // Estes caracteres são aceitos como caracteres para representarem
     // os jogadores. Utizado para evitar caracteres que não combinem com
     // o desenho do tabuleiro.
