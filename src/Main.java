@@ -213,6 +213,42 @@ caractereUsuario);
      */
     static int[] obterJogadaUsuario(String posicoesLivres, Scanner teclado) {
         //TODO 14: Implementar método conforme explicação
+
+        System.out.println("Entre com as posições para marcação no formato de LINHA X COLUNA com uma espaço entre os números");
+        System.out.println("Exemplo: 1 1");
+        
+        while (true) {
+            System.out.println("");
+            System.out.println("É a sua vez! Digite sua jogada: ");
+            String[] entradaUsuario = teclado.nextLine().split(" ");
+
+            if (entradaUsuario.length != 2) {
+                System.out.println("Digite exatamente dois valores.");
+                System.out.println("Exemplo: 1 1");
+                continue;
+            }
+
+            int linha, coluna;
+            try {
+                linha = Integer.parseInt(entradaUsuario[0]) - 1;
+                coluna = Integer.parseInt(entradaUsuario[1]) - 1;
+            } catch (NumberFormatException e) {
+                System.out.println("Digite apenas números.");
+                continue;
+            }
+
+            if (jogadaValida(posicoesLivres, linha, coluna)) {
+                return new int[]{linha, coluna};
+            }
+
+            System.out.println("Jogada inválida.");
+            System.out.printf("Possíveis disponíveis para jogar: ");
+
+            String[] posicoes = posicoesLivres.split(";");
+            for (String posicao : posicoes) {
+                System.out.printf(posicao + " ");
+            }
+        }
     }
 
     /*
@@ -423,7 +459,7 @@ caractereUsuario);
         // para garantir que seja exibido o tabuleiro sem nenhum conteúdo antes dele.
         limparTela();
         System.out.println("-------------");
-        for (int i = 0; i < tabuleiro.lengthh; i++) {
+        for (int i = 0; i < tabuleiro.length; i++) {
             for(int j = 0; j < tabuleiro[i].length; j++) {
                 System.out.print("| " + tabuleiro[i][j] + " ");
 
