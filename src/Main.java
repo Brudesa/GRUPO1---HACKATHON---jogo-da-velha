@@ -214,15 +214,19 @@ caractereUsuario);
     static int[] obterJogadaUsuario(String posicoesLivres, Scanner teclado) {
         //TODO 14: Implementar método conforme explicação
 
-        System.out.println("Entre com as posições para marcação no formato de LINHA X COLUNA com uma espaço entre os números");
-        System.out.println("Exemplo: 1 1");
+        System.out.println("");
+        System.out.println("Sua vez!");
+        System.out.println("");
+        System.out.println("Faça a sua jogada. Exemplo: 1 1");
+        System.out.println("");
         
         while (true) {
             System.out.println("");
-            System.out.println("É a sua vez! Digite sua jogada: ");
+            System.out.println("Digite linha e coluna (1 a 3): ");
             String[] entradaUsuario = teclado.nextLine().split(" ");
 
             if (entradaUsuario.length != 2) {
+                System.out.println("");
                 System.out.println("Digite exatamente dois valores.");
                 System.out.println("Exemplo: 1 1");
                 continue;
@@ -233,6 +237,7 @@ caractereUsuario);
                 linha = Integer.parseInt(entradaUsuario[0]) - 1;
                 coluna = Integer.parseInt(entradaUsuario[1]) - 1;
             } catch (NumberFormatException e) {
+                System.out.println("");
                 System.out.println("Digite apenas números.");
                 continue;
             }
@@ -241,6 +246,7 @@ caractereUsuario);
                 return new int[]{linha, coluna};
             }
 
+            System.out.println("");
             System.out.println("Jogada inválida.");
             System.out.printf("Possíveis disponíveis para jogar: ");
 
