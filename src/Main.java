@@ -453,6 +453,14 @@ caractereUsuario);
      */
     static void exibirVitoriaComputador() {
         //TODO 28: Implementar método conforme explicação
+		System.out.println("O computador venceu!");
+		System.out.println("    ___");
+		System.out.println("   |___|");
+		System.out.println("   |o o|");
+		System.out.println("   | ^ |");
+		System.out.println("   |___|");
+		System.out.println("  /|   |\\");
+		System.out.println(" / |   | \\");
     }
 
     /*
@@ -464,6 +472,11 @@ caractereUsuario);
      */
     static void exibirVitoriaUsuario() {
         //TODO 29: Implementar método conforme explicação
+		System.out.println("O usuário venceu!");
+		System.out.println("    \\o/");
+		System.out.println("     |");
+		System.out.println("    / \\");
+		System.out.println("  PARABÉNS!");
     }
 
     /*
@@ -475,6 +488,12 @@ caractereUsuario);
      */
     static void exibirEmpate() {
         //TODO 30: Implementar método conforme explicação
+		System.out.println("Ocorreu empate!");
+		System.out.println("   _____");
+		System.out.println("  |0 X 0|");
+		System.out.println("  |-----|");
+		System.out.println("  |EMPATE|");
+		System.out.println("   -----");
     }
 
     /*
