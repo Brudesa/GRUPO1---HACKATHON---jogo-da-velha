@@ -59,7 +59,7 @@ public class Main {
                 }
 
                 // define que na proxima execucao do laco o jogador nao joga, ou seja, será a vez do computador
-                vezUsuarioJogar = false;
+               // vezUsuarioJogar = false;
             } else {
                 processarVezComputador(caractereComputador); 
                 //TODO 05: Execute a chamada processar vez do computador
@@ -238,8 +238,18 @@ caractereUsuario);
      * e nem para tentar ganhar.
      * Nível de complexidade: 6 de 10
      */
+
+    //TODO 15: Implementar método conforme explicação
     static int[] obterJogadaComputador(String posicoesLivres, Scanner teclado) {
-        //TODO 15: Implementar método conforme explicação
+        Random random = new Random();
+        String[] posicoes = posicoesLivres.split(";");
+
+        if(posicoes.length > 0 && !posicoes[0]. isEmpty()){
+            String jogadaSelecionada = posicoes[random.nextInt(posicoes.length)];
+            return converterJogadaStringParaVetorInt(jogadaSelecionada);
+        }
+
+        return new int[]{0,0};
     }
 
     /*
@@ -307,19 +317,19 @@ caractereUsuario);
      * colunas. Depois de montar a string retorne a mesma através do comando return
      * Nível de complexidade: 5 de 10
      */
+     //TODO 19: Implementar método conforme explicação
     static String retornarPosicoesLivres() {
-        //TODO 19: Implementar método conforme explicação
-        String posicoes = "";
-        for (int linha = 0; linha < tabuleiro.length; linha ++){
-            for (int coluna = 0; coluna < tabuleiro[linha].length; coluna++) {
-                if (tabuleiro[linha][coluna] == ' ') {
-                    posicoes = posicoes + linha + coluna + ";";
+        String posicoes ="";
+
+        for (int i = 0; i < tabuleiro.length; i++) {
+            for (int j = 0; j < tabuleiro[i].length; j++) {
+                if (tabuleiro[i][j] == ' ') {
+                    posicoes += i + "" + j + ";";
                 }
             }
         }
         return posicoes;
     }
-
 
     /*
      * Descrição: Utilizado para verificar se o jogador identificado por
@@ -413,13 +423,19 @@ caractereUsuario);
         // para garantir que seja exibido o tabuleiro sem nenhum conteúdo antes dele.
         limparTela();
         System.out.println("-------------");
-        for (int linha = 0; linha < App.tabuleiro.length; linha++) {
-            System.out.print("| ");
-            for (int coluna = 0; App.tabuleiro[linha].length < 3; coluna++) {
-                System.out.print(App.tabuleiro[linha][coluna] + " | ");
+        for (int i = 0; i < tabuleiro.lengthh; i++) {
+            for(int j = 0; j < tabuleiro[i].length; j++) {
+                System.out.print("| " + tabuleiro[i][j] + " ");
+
+                if(j < tabuleiro[i].length - 1) {
+                    System.out.print(" ");
+                }
             }
-            System.out.println();
-            System.out.println("-------------");
+            System.out.println("|");
+
+            if(i < tabuleiro.length - 1) {
+                System.out.println("-------------");
+            }
         }
     }
 
@@ -435,13 +451,13 @@ caractereUsuario);
      * retornado através do comando return
      * Nível de complexidade: 3 de 10
      */
+    //TODO 27: Implementar método conforme explicação
     static void atualizaTabuleiro(int[] jogada, char caractereJogador) {
-        //TODO 27: Implementar método conforme explicação
         int linha = jogada[0];
         int coluna = jogada[1];
-        
-        tabuleiro[linha][coluna] = caractereJogador;
 
+        tabuleiro[linha][coluna] = caractereJogador;
+        
     }
 
     /*
@@ -504,8 +520,10 @@ caractereUsuario);
      * função retornarPosicoesLivres. Retorne true se teve empate ou false
      * Nível de complexidade: 3 de 10
      */
+    //TODO 31: Implementar método conforme explicação
     static boolean teveEmpate() {
-        //TODO 31: Implementar método conforme explicação
+        String posicoes = retornarPosicoesLivres();
+        return posicoes.isEmpty();        
 
     }
 
@@ -517,10 +535,10 @@ caractereUsuario);
      * método deve retornar o valor sorteado.
      * Nível de complexidade: 3 de 10
      */
+    //TODO 32: Implementar método conforme explicação
     static boolean sortearValorBooleano() {
-        //TODO 32: Implementar método conforme explicação
-        Random sorteador = new Random();
-        return sorteador.nextBoolean();
-    
+        Random random = new Random();
+        return random.nextBoolean();
+        
     }
 }
