@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 
 
-public class App {
+public class Main {
     // Estes caracteres são aceitos como caracteres para representarem
     // os jogadores. Utizado para evitar caracteres que não combinem com
     // o desenho do tabuleiro.
@@ -39,20 +39,20 @@ public class App {
         boolean vezUsuarioJogar =  sortearValorBooleano();  
 
         boolean jogoContinua;
+        
 
         do {
             // controla se o jogo terminou
             jogoContinua = true;
             exibirTabuleiro();
 
-            if (vezUsuarioJogar){
-               
-                //TODO 03: Execute a chamada processar vez do usuario
-
+            if (vezUsuarioJogar == true){
+                processarVezUsuario(caractereUsuario); //TODO 03: Execute a chamada processar vez do usuario
                 // Verifica se o usuario venceu
-                //TODO 04: Este if deve executar apenas se teve ganhador 
-                if ( /*TODO: esreva aqui a chamada para teveGanhador verificar se o usuário ganhou*/ ) {
-                    
+                //TODO 04: Este if deve executar apenas se teve ganhador
+                //Modificado por ADRIANA¹
+                //Modificado por João Victor² | if (teveGanhador == true) -> if (teveGanhador(caractereUsuario))
+                if (teveGanhador(caractereUsuario)) /*TODO: esreva aqui a chamada para teveGanhador verificar se o usuário ganhou*/  {
                     exibirTabuleiro();
                     exibirVitoriaUsuario();
                     jogoContinua = false;
@@ -61,24 +61,31 @@ public class App {
                 // define que na proxima execucao do laco o jogador nao joga, ou seja, será a vez do computador
                 vezUsuarioJogar = false;
             } else {
-
+                processarVezComputador(caractereComputador); 
                 //TODO 05: Execute a chamada processar vez do computador
+                //Modificado por ADRIANA
 
                 // Verifica se o computador venceu
                 //TODO 06: Este if deve executar apenas se teve ganhador
-                if ( /*esreva aqui a chamada para teve ganhador*/ ) {
-
-                    //TODO 07: Exiba que o computador ganhou
+                //Modificado por ADRIANA
+                //Modificado por João Victor² | if (teveGanhador == true) -> if (teveGanhador(caractereComputador))
+                if (teveGanhador(caractereComputador)) {
+                    exibirTabuleiro();
+                    exibirVitoriaComputador(); 
+                    //TODO 07: Exiba que o computador ganhou 
+                    // //Modificado por ADRIANA
                     jogoContinua = false;
                 }
 
-                //TODO 08: defina qual o vaor a variavel abaixo deve possuir para que a proxima execucao do laco seja a vez do usuário
-                vezUsuarioJogar = ????;
+                //TODO 08: defina qual o valor a variavel abaixo deve possuir para que a proxima execucao do laco seja a vez do usuário
+                //Modificado por ADRIANA
+                vezUsuarioJogar = true;
             }
         
             //TODO 09: Este if deve executar apenas se o jogo continua E 
-            //ocorreu tempate. Utilize o metodo teveEmpate()
-            if ( /*escreva aqui a condicao conforme o TODO acima*/ ) {
+            //ocorreu empate. Utilize o metodo teveEmpate()
+            //Modificado por ADRIANA
+            if (jogoContinua && teveEmpate()) {
                 exibirTabuleiro();
                 exibirEmpate();
                 jogoContinua = false;
@@ -102,7 +109,13 @@ public class App {
      */
     static void inicializarTabuleiro() {
         //TODO 10: Implementar método conforme explicação
+        // Modificado por Bruna
 
+        for(int linha = 0; linha < tabuleiro.length; linha++){
+            for(int coluna = 0; coluna < tabuleiro[linha].length; coluna++){
+                tabuleiro[linha][coluna] = ' ';
+            }
+        }
     }
 
     /*
@@ -165,9 +178,13 @@ caractereUsuario);
      * dentro da lista de posições livres pense em usar método contanis da string.
      * Nível de complexidade: 3 de 10
      */
-    static boolean jogadaValida(String posicoesLivres, int linha, int coluna) {
+
         //TODO 13: Implementar método conforme explicação
+        static boolean jogadaValida(String posicoesLivres, int linha, int coluna) {
+            String alvo = "" + linha + coluna + ";";
+            return posicoesLivres.contains(alvo);    
     }
+    
 
     /*
      * Descrição: Utilizado para obter do usuário a linha e a coluna que ele deseja
@@ -234,9 +251,16 @@ caractereUsuario);
      * return.
      * Nível de complexidade: 4 de 10
      */
+
     static int[] converterJogadaStringParaVetorInt(String jogada) {
         //TODO 16: Implementar método conforme explicação
-    }
+    
+    int[] v = new int[2];
+    v[0] = Character.getNumericValue(jogada.charAt(0));
+    v[1] = Character.getNumericValue(jogada.charAt(1));
+    return v;
+}
+ 
 
     /*
      * Descrição: Utilizado para realizar as ações necessárias para processar a vez
@@ -248,7 +272,10 @@ caractereUsuario);
      * Nível de complexidade: 5 de 10
      */
     static void processarVezUsuario(char caractereUsuario) {
-        //TODO 17: Implementar método conforme explicação
+        //ADRIANA TODO 17: Implementar método conforme explicação
+        String livres = retornarPosicoesLivres();
+        int[] jogada = obterJogadaUsuario(livres , teclado);
+        atualizaTabuleiro(jogada, caractereUsuario);
     }
 
     /*
@@ -263,7 +290,10 @@ caractereUsuario);
      * Nível de complexidade: 10 de 10 se o computador for jogar para ganhar
      */
     static void processarVezComputador(char caractereComputador) {
-        //TODO 18: Implementar método conforme explicação
+        //ADRIANA TODO 18: Implementar método conforme explicação
+        String livres = retornarPosicoesLivres();
+        int[] jogada = obterJogadaComputador(livres , teclado);
+        atualizaTabuleiro(jogada, caractereComputador);
     }
 
     /*
@@ -279,6 +309,15 @@ caractereUsuario);
      */
     static String retornarPosicoesLivres() {
         //TODO 19: Implementar método conforme explicação
+        String posicoes = "";
+        for (int linha = 0; linha < tabuleiro.length; linha ++){
+            for (int coluna = 0; coluna < tabuleiro[linha].length; coluna++) {
+                if (tabuleiro[linha][coluna] == ' ') {
+                    posicoes = posicoes + linha + coluna + ";";
+                }
+            }
+        }
+        return posicoes;
     }
 
 
@@ -300,11 +339,8 @@ caractereUsuario);
      */
     static boolean teveGanhador(char caractereJogador) {
         //TODO 20: Implementar método conforme explicação
-        if(teveGanhadorLinha(caractereJogador) || teveGanhadorColuna(caractereJogador) ||
-                teveGanhadorDiagonalPrincipal(caractereJogador) || teveGanhadorDiagonalSecundaria(caractereJogador)){
-            return true;
-        }
-        return false;
+        return teveGanhadorLinha(caractereJogador) || teveGanhadorColuna(caractereJogador) ||
+                teveGanhadorDiagonalPrincipal(caractereJogador) || teveGanhadorDiagonalSecundaria(caractereJogador);
     }
 
     /*
@@ -320,8 +356,8 @@ caractereUsuario);
      */
     static boolean teveGanhadorLinha(char caractereJogador) {
         //TODO 21: Implementar método conforme explicação
-        for(int i = 0; i < tabuleiro.length; i++){
-            if (tabuleiro[i][0] == caractereJogador && tabuleiro[i][1] == caractereJogador && tabuleiro[i][2] == caractereJogador){
+        for(int i = 0; i < App.tabuleiro.length; i++){
+            if (App.tabuleiro[i][0] == caractereJogador && App.tabuleiro[i][1] == caractereJogador && App.tabuleiro[i][2] == caractereJogador){
                 return true;
             }
 
@@ -331,9 +367,9 @@ caractereUsuario);
 
     static boolean teveGanhadorColuna(char caractereJogador) {
         //TODO 22: Implementar método conforme explicação
-        for(int i = 0; i < tabuleiro.length; i++){
-            for(int j = 0; j < tabuleiro[i].length; j++){
-                if(tabuleiro[0][j] == caractereJogador && tabuleiro[1][j] == caractereJogador && tabuleiro[2][j] == caractereJogador){
+        for(int linha = 0; linha < App.tabuleiro.length; linha++){
+            for(int coluna = 0; coluna < App.tabuleiro[linha].length; coluna++){
+                if((App.tabuleiro[0][coluna] == caractereJogador) && (App.tabuleiro[1][coluna] == caractereJogador) && (App.tabuleiro[2][coluna] == caractereJogador)){
                     return true;
                 }
             }
@@ -343,18 +379,12 @@ caractereUsuario);
 
     static boolean teveGanhadorDiagonalPrincipal( char caractereJogador) {
         //TODO 23: Implementar método conforme explicação
-        if (tabuleiro[0][0] == caractereJogador && tabuleiro[1][1] == caractereJogador && tabuleiro[2][2] == caractereJogador){
-            return true;
-        }
-        return false;
+        return App.tabuleiro[0][0] == caractereJogador && App.tabuleiro[1][1] == caractereJogador && App.tabuleiro[2][2] == caractereJogador;
     }
 
     static boolean teveGanhadorDiagonalSecundaria(char caractereJogador) {
         //TODO 24: Implementar método conforme explicação
-        if (tabuleiro[2][0] == caractereJogador && tabuleiro[1][1] == caractereJogador && tabuleiro[0][2] == caractereJogador){
-            return true;
-        }
-        return false;
+        return App.tabuleiro[2][0] == caractereJogador && App.tabuleiro[1][1] == caractereJogador && App.tabuleiro[0][2] == caractereJogador;
     }
 
     /*
@@ -381,6 +411,16 @@ caractereUsuario);
         //TODO 26: Implementar método conforme explicação
         // execute no início deste método a chamada ao método limparTela
         // para garantir que seja exibido o tabuleiro sem nenhum conteúdo antes dele.
+        limparTela();
+        System.out.println("-------------");
+        for (int linha = 0; linha < App.tabuleiro.length; linha++) {
+            System.out.print("| ");
+            for (int coluna = 0; App.tabuleiro[linha].length < 3; coluna++) {
+                System.out.print(App.tabuleiro[linha][coluna] + " | ");
+            }
+            System.out.println();
+            System.out.println("-------------");
+        }
     }
 
     /*
@@ -397,6 +437,10 @@ caractereUsuario);
      */
     static void atualizaTabuleiro(int[] jogada, char caractereJogador) {
         //TODO 27: Implementar método conforme explicação
+        int linha = jogada[0];
+        int coluna = jogada[1];
+        
+        tabuleiro[linha][coluna] = caractereJogador;
 
     }
 
@@ -475,10 +519,8 @@ caractereUsuario);
      */
     static boolean sortearValorBooleano() {
         //TODO 32: Implementar método conforme explicação
-    }
-
-
-}
-        
+        Random sorteador = new Random();
+        return sorteador.nextBoolean();
+    
     }
 }
