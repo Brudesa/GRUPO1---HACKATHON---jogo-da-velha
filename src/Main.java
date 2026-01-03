@@ -59,7 +59,7 @@ public class Main {
                 }
 
                 // define que na proxima execucao do laco o jogador nao joga, ou seja, será a vez do computador
-               // vezUsuarioJogar = false;
+                vezUsuarioJogar = false;
             } else {
                 processarVezComputador(caractereComputador); 
                 //TODO 05: Execute a chamada processar vez do computador
