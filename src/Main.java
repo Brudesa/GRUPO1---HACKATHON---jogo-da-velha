@@ -189,7 +189,11 @@ public class Main {
 
             String[] posicoes = posicoesLivres.split(";");
             for (String posicao : posicoes) {
-                System.out.printf(posicao + " ");
+                int linhaVisual = Character.getNumericValue(posicao.charAt(0)) + 1;
+            
+                int colunaVisual = Character.getNumericValue(posicao.charAt(1)) + 1;
+
+                System.out.print(linhaVisual + "" + colunaVisual + " ");
             }
         }
     }
@@ -308,7 +312,7 @@ public class Main {
     //conteúdo atual do jogo. 
     //TODO 25: Modificado por
     static void limparTela() {
-        
+
         System.out.println("\n".repeat(20));
         System.out.print("\033[H\033[2J");
         System.out.flush();
