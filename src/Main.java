@@ -129,17 +129,20 @@ public class Main {
      * Nível de complexidade: 4 de 10
      */
     static char obterCaractereUsuario() {
-        //TODO 11: Implementar método conforme explicação 
+        //TODO 11: Implementar método conforme explicação
          // procurei uma forma de transformar as letras em maiusculas e achei esse toupperCase.
          //modificado por YURI
-        char c;  
-        do {  
-            System.out.print("Escolha seu caractere (X, O, U ou C): ");  
-            c = teclado.next().toUpperCase().charAt(0);  
-        } while (CARACTERES_IDENTIFICADORES_ACEITOS.indexOf(c) == -1);  
-        return c;  
-     
+        char c;
+        while (true) {
+            System.out.print("Escolha seu caractere (X, O, U ou C): ");
+            c = teclado.next().toUpperCase().charAt(0);
 
+            if (CARACTERES_IDENTIFICADORES_ACEITOS.indexOf(c) == -1) {
+                System.out.printf("%s é uma entrada inválida. Escolha uma das opções disponíveis.\n\n", c);
+                continue;
+            }
+            return c;
+        }
     }
 
     /*
@@ -158,13 +161,22 @@ public class Main {
     static char obterCaractereComputador(char caractereUsuario) {
         //TODO 12: Implementar método conforme explicação
         //modificado por YURI
-        char c;  
-        do {  
-            System.out.print("Escolha o caractere do computador: ");  
-            c = teclado.next().toUpperCase().charAt(0);  
-        } while (CARACTERES_IDENTIFICADORES_ACEITOS.indexOf(c) == -1 || c == 
-caractereUsuario);  
-        return c;  
+        char c;
+        while (true) {
+            System.out.print("Escolha o caractere do computador: ");
+            c = teclado.next().toUpperCase().charAt(0);
+
+            if (CARACTERES_IDENTIFICADORES_ACEITOS.indexOf(c) == -1) {
+                System.out.printf("%s é uma entrada inválida. Escolha uma das opções disponíveis.\n\n", c);
+                continue;
+            } else if (c == caractereUsuario) {
+                System.out.printf("%s já escolhido. Use uma das outras opções.\n\n", c);
+                continue;
+            } else {
+                return c;
+            }
+        }
+        
 
     }
 
