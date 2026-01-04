@@ -108,6 +108,7 @@ public class Main {
         while (true) {
             System.out.print("Escolha seu caractere (X, O, U ou C): ");
             c = teclado.next().toUpperCase().charAt(0);
+            teclado.nextLine();
 
             if (CARACTERES_IDENTIFICADORES_ACEITOS.indexOf(c) == -1) {
                 System.out.printf("%s é uma entrada inválida. Escolha uma das opções disponíveis.\n\n", c);
@@ -126,6 +127,7 @@ public class Main {
         while (true) {
             System.out.print("Escolha o caractere do computador: ");
             c = teclado.next().toUpperCase().charAt(0);
+            teclado.nextLine();
 
             if (CARACTERES_IDENTIFICADORES_ACEITOS.indexOf(c) == -1) {
                 System.out.printf("%s é uma entrada inválida. Escolha uma das opções disponíveis.\n\n", c);
