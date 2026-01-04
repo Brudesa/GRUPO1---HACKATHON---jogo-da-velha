@@ -214,21 +214,18 @@ caractereUsuario);
     static int[] obterJogadaUsuario(String posicoesLivres, Scanner teclado) {
         //TODO 14: Implementar método conforme explicação
 
-        System.out.println("");
-        System.out.println("Sua vez!");
-        System.out.println("");
-        System.out.println("Faça a sua jogada. Exemplo: 1 1");
-        System.out.println("");
+        System.out.println("Sua vez!\n");
+        System.out.println("Faça a sua jogada.\n" +
+                "Exemplo: 1 1");
+        System.out.println();
         
         while (true) {
-            System.out.println("");
             System.out.println("Digite linha e coluna (1 a 3): ");
             String[] entradaUsuario = teclado.nextLine().split(" ");
 
             if (entradaUsuario.length != 2) {
-                System.out.println("");
-                System.out.println("Digite exatamente dois valores.");
-                System.out.println("Exemplo: 1 1");
+                System.out.println("\nDigite exatamente dois valores.");
+                System.out.println("Exemplo: 1 1\n");
                 continue;
             }
 
@@ -412,7 +409,6 @@ caractereUsuario);
             if (tabuleiro[i][0] == caractereJogador && tabuleiro[i][1] == caractereJogador && tabuleiro[i][2] == caractereJogador){
                 return true;
             }
-
         }
         return false;
     }
@@ -446,7 +442,8 @@ caractereUsuario);
      * Nível de complexidade: 3 de 10
      */
     static void limparTela() {
-        //TODO 25: Implementar método conforme explicação        
+        //TODO 25: Implementar método conforme explicação
+        System.out.println("\n".repeat(50));
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
@@ -464,21 +461,26 @@ caractereUsuario);
         // execute no início deste método a chamada ao método limparTela
         // para garantir que seja exibido o tabuleiro sem nenhum conteúdo antes dele.
         limparTela();
-        System.out.println("-------------");
+        System.out.println();
         for (int i = 0; i < tabuleiro.length; i++) {
             for(int j = 0; j < tabuleiro[i].length; j++) {
-                System.out.print("| " + tabuleiro[i][j] + " ");
+                if(j == 0){
+                    System.out.print(" " + tabuleiro[i][j] + " | ");
+                }
+                else if(j == 1) {
+                    System.out.print(tabuleiro[i][j] + " | ");
 
-                if(j < tabuleiro[i].length - 1) {
-                    System.out.print(" ");
+                }
+                else {
+                    System.out.print(tabuleiro[i][j] + "\n");
                 }
             }
-            System.out.println("|");
 
             if(i < tabuleiro.length - 1) {
-                System.out.println("-------------");
+                System.out.println("---+---+---");
             }
         }
+        System.out.println();
     }
 
     /*
