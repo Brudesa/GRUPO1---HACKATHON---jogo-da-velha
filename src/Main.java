@@ -154,13 +154,11 @@ public class Main {
     //TODO 14: Modificado por 
     static int[] obterJogadaUsuario(String posicoesLivres, Scanner teclado) {
     
-        System.out.println("Sua vez!\n");
-        System.out.println("Faça a sua jogada.\n" +
-                "Exemplo: 1 1");
-        System.out.println();
+        System.out.printf("Sua vez!\n");
+        System.out.printf("Faça a sua jogada.\n" + "Exemplo: 1 1\n");
         
         while (true) {
-            System.out.println("Digite linha e coluna (1 a 3): ");
+            System.out.println("\nDigite linha e coluna (1 a 3): ");
             String[] entradaUsuario = teclado.nextLine().split(" ");
 
             if (entradaUsuario.length != 2) {
@@ -185,7 +183,7 @@ public class Main {
 
             System.out.println("");
             System.out.println("Jogada inválida.");
-            System.out.printf("Possíveis disponíveis para jogar: ");
+            System.out.printf("Jogadas disponíveis: \n");
 
             String[] posicoes = posicoesLivres.split(";");
             for (String posicao : posicoes) {
