@@ -108,6 +108,7 @@ public class Main {
         while (true) {
             System.out.print("Escolha seu caractere (X, O, U ou C): ");
             c = teclado.next().toUpperCase().charAt(0);
+            teclado.nextLine();
 
             if (CARACTERES_IDENTIFICADORES_ACEITOS.indexOf(c) == -1) {
                 System.out.printf("%s é uma entrada inválida. Escolha uma das opções disponíveis.\n\n", c);
@@ -126,6 +127,7 @@ public class Main {
         while (true) {
             System.out.print("Escolha o caractere do computador: ");
             c = teclado.next().toUpperCase().charAt(0);
+            teclado.nextLine();
 
             if (CARACTERES_IDENTIFICADORES_ACEITOS.indexOf(c) == -1) {
                 System.out.printf("%s é uma entrada inválida. Escolha uma das opções disponíveis.\n\n", c);
@@ -152,13 +154,11 @@ public class Main {
     //TODO 14: Modificado por 
     static int[] obterJogadaUsuario(String posicoesLivres, Scanner teclado) {
     
-        System.out.println("Sua vez!\n");
-        System.out.println("Faça a sua jogada.\n" +
-                "Exemplo: 1 1");
-        System.out.println();
+        System.out.printf("Sua vez!\n");
+        System.out.printf("Faça a sua jogada.\n" + "Exemplo: 1 1\n");
         
         while (true) {
-            System.out.println("Digite linha e coluna (1 a 3): ");
+            System.out.println("\nDigite linha e coluna (1 a 3): ");
             String[] entradaUsuario = teclado.nextLine().split(" ");
 
             if (entradaUsuario.length != 2) {
@@ -183,11 +183,15 @@ public class Main {
 
             System.out.println("");
             System.out.println("Jogada inválida.");
-            System.out.printf("Possíveis disponíveis para jogar: ");
+            System.out.printf("Jogadas disponíveis: \n");
 
             String[] posicoes = posicoesLivres.split(";");
             for (String posicao : posicoes) {
-                System.out.printf(posicao + " ");
+                int linhaVisual = Character.getNumericValue(posicao.charAt(0)) + 1;
+            
+                int colunaVisual = Character.getNumericValue(posicao.charAt(1)) + 1;
+
+                System.out.print(linhaVisual + "" + colunaVisual + " ");
             }
         }
     }
@@ -198,7 +202,7 @@ public class Main {
         Random random = new Random();
         String[] posicoes = posicoesLivres.split(";");
 
-        if(posicoes.length > 0 && !posicoes[0]. isEmpty()){
+        if(posicoes.length > 0 && !posicoes[0].isEmpty()){
             String jogadaSelecionada = posicoes[random.nextInt(posicoes.length)];
             return converterJogadaStringParaVetorInt(jogadaSelecionada);
         }
@@ -306,7 +310,7 @@ public class Main {
     //conteúdo atual do jogo. 
     //TODO 25: Modificado por
     static void limparTela() {
-        
+
         System.out.println("\n".repeat(20));
         System.out.print("\033[H\033[2J");
         System.out.flush();
